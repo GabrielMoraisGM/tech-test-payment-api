@@ -1,16 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace tech_test_payment_api.Models
 {
+    [Table("Vendedor")]
     public class Vendedor
     {
-        public int Id { get; set; }
+        [Key()]
+        public int VendedorId { get; set; }
         public string Nome { get; set; }
-        public int Cpf { get; set; }
+        public ulong Cpf { get; set; }
         public string Email { get; set; }
-        public int Telefone { get; set; }
+        public ulong Telefone { get; set; }
     }
 }

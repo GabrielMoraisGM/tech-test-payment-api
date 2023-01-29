@@ -7,10 +7,14 @@ using tech_test_payment_api.Models;
 
 namespace tech_test_payment_api.Context
 {
-    public class VendedorContext : DbContext
+    public class ApiContext : DbContext
     {
-        public VendedorContext(DbContextOptions<VendedorContext> options): base(options)
-        {}
+        public ApiContext(DbContextOptions<ApiContext> options): base(options)
+        {
+        }
+
+        public DbSet<Venda> Vendas { get; set; }
         public DbSet<Vendedor> Vendedores { get; set; }
+
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using tech_test_payment_api.Context;
 using tech_test_payment_api.Models;
 
@@ -12,17 +13,17 @@ namespace tech_test_payment_api.Controllers
     [Route("[Controller]")]
     public class VendedorController : ControllerBase
     {
-        private readonly VendedorContext _vendedorcontext;
+        private readonly ApiContext _dbcontext;
 
-        public VendedorController(VendedorContext vendedor){
-            _vendedorcontext = vendedor;
+        public VendedorController(ApiContext context){
+            _dbcontext = context;
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(Vendedor vendedor)
-        {
-            _vendedorcontext.Add(vendedor);
-            _vendedorcontext.SaveChanges();
+        public IActionResult Cadastrar(Vendedor vendedor){
+
+            _dbcontext.Add(vendedor);
+            _dbcontext.SaveChanges();
 
             return Ok(vendedor);
         }
@@ -30,7 +31,7 @@ namespace tech_test_payment_api.Controllers
         [HttpGet]
         public IActionResult Consultar()
         {
-            var dbVendedor = _vendedorcontext.Vendedores;
+            var dbVendedor = _dbcontext.Vendedores;
 
             return Ok(dbVendedor);
         }
@@ -38,7 +39,7 @@ namespace tech_test_payment_api.Controllers
         [HttpPut]
         public IActionResult Atualizar(int id, Vendedor vendedor){
 
-            var dbVendedor = _vendedorcontext.Vendedores.Find(id);
+            var dbVendedor = _dbcontext.Vendedores.Find(id);
 
             if(dbVendedor == null){
                 return NotFound();
@@ -48,22 +49,22 @@ namespace tech_test_payment_api.Controllers
             dbVendedor.Cpf = vendedor.Cpf;
             dbVendedor.Email = vendedor.Email;
             dbVendedor.Telefone = vendedor.Telefone;
-
-            _vendedorcontext.SaveChanges();
+            
+            _dbcontext.SaveChanges();
 
             return Ok(dbVendedor);
         }
 
         [HttpDelete]
         public IActionResult Deletar(int id){
-            var dbVendedor = _vendedorcontext.Vendedores.Find(id);
+            var dbVendedor = _dbcontext.Vendedores.Find(id);
 
             if(dbVendedor == null){
                 return NotFound();
             }
 
-            _vendedorcontext.Remove(dbVendedor);
-            _vendedorcontext.SaveChanges();
+            _dbcontext.Remove(dbVendedor);
+            _dbcontext.SaveChanges();
 
             return NoContent();
         }

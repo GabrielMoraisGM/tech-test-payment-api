@@ -36,3 +36,4 @@ C:\Users\gabri\OneDrive\Área de Trabalho\tech-test-payment-api\obj\Debug\net6.0
 C:\Users\gabri\OneDrive\Área de Trabalho\tech-test-payment-api\obj\Debug\net6.0\tech-test-payment-api.pdb
 C:\Users\gabri\OneDrive\Área de Trabalho\tech-test-payment-api\obj\Debug\net6.0\tech-test-payment-api.genruntimeconfig.cache
 C:\Users\gabri\OneDrive\Área de Trabalho\tech-test-payment-api\obj\Debug\net6.0\ref\tech-test-payment-api.dll
+C:\Users\gabri\OneDrive\Área de Trabalho\tech-test-payment-api\bin\Debug\net6.0\Newtonsoft.Json.dll
